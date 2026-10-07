@@ -1,0 +1,44 @@
+name: Windows release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - run: npm ci
+      - run: npm run check
+      - run: npm run release
+      - name: Collect dependency notices and package
+        shell: pwsh
+        run: |
+          ./scripts/prepare-vb-cable.ps1
+          ./scripts/dependency-notices.ps1
+          ./scripts/package-release.ps1
+      - name: Publish Windows ZIP
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version=(Get-Content package.json -Raw | ConvertFrom-Json).version
+          $tag="v$version"
+          if ('${{ github.ref_type }}' -eq 'tag' -and '${{ github.ref_name }}' -ne $tag) { throw 'Tag and package version differ.' }
+          $zip="release/Luna-Mic-$version-windows-x64.zip"
+          gh release view $tag --repo '${{ github.repository }}' *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload $tag $zip --clobber --repo '${{ github.repository }}'
+          } else {
+            gh release create $tag $zip --title "Luna Mic $version" --notes-file .github/release-notes.md --repo '${{ github.repository }}'
+          }
+          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed.' }

@@ -1,0 +1,25 @@
+{
+  "name": "luna-mic",
+  "version": "0.7.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc && vite build",
+    "tauri": "tauri",
+    "app": "tauri dev --features noise-suppression,speex,webrtc,deepfilter",
+    "release": "tauri build --no-bundle --features noise-suppression,speex,webrtc,deepfilter",
+    "format": "prettier --write ui assets/microphones/profiles.json *.json *.ts .vscode && cargo fmt --manifest-path src-tauri/Cargo.toml",
+    "format:check": "prettier --check ui assets/microphones/profiles.json package.json tsconfig.json vite.config.ts .vscode && cargo fmt --manifest-path src-tauri/Cargo.toml --check",
+    "check": "npm run build && npm run format:check && cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings && cargo test --manifest-path src-tauri/Cargo.toml"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.8.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.0",
+    "prettier": "^3.9.9",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0"
+  }
+}

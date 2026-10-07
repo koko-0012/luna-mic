@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Luna Mic: run desktop",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "app"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Luna Mic: check everything",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "check"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Luna Mic: release",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "release"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Luna Mic: format source",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "format"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Luna Mic: list audio devices",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["run", "--manifest-path", "src-tauri/Cargo.toml", "--bin", "audio-smoke"],
+      "problemMatcher": ["$rustc"]
+    }
+  ]
+}

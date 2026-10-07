@@ -1,0 +1,11 @@
+node_modules/
+dist/
+release/
+third-party/
+vendor/
+.dependency-checkouts/
+src-tauri/target/
+src-tauri/gen/
+src-tauri/icons/
+package-lock.json
+docs/dependencies.json

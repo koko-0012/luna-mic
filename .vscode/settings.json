@@ -1,0 +1,27 @@
+{
+  "editor.formatOnSave": true,
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[rust]": { "editor.defaultFormatter": "rust-lang.rust-analyzer" },
+  "rust-analyzer.linkedProjects": ["src-tauri/Cargo.toml"],
+  "rust-analyzer.check.command": "clippy",
+  "search.exclude": {
+    "vendor": true,
+    ".dependency-checkouts": true,
+    "**/node_modules": true,
+    "**/target": true,
+    "dist": true,
+    "release": true,
+    "third-party": true,
+    "src-tauri/gen": true
+  },
+  "files.watcherExclude": {
+    "**/.dependency-checkouts/**": true,
+    "**/vendor/**": true,
+    "**/target/**": true,
+    "**/node_modules/**": true,
+    "**/third-party/**": true
+  },
+  "files.exclude": { "**/target": true, "**/node_modules": true }
+}

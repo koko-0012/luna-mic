@@ -1,0 +1,25 @@
+[
+  {
+    "brand": "HyperX",
+    "matches": ["hyperx", "quadcast", "solocast"],
+    "image": null,
+    "models": [
+      { "matches": ["quadcast 2 s"], "image": null },
+      { "matches": ["quadcast 2"], "image": null },
+      { "matches": ["quadcast s"], "image": null },
+      { "matches": ["quadcast"], "image": null },
+      { "matches": ["solocast"], "image": null }
+    ]
+  },
+  {
+    "brand": "Logitech / Blue",
+    "matches": ["logitech", "blue yeti", "blue snowball", "yeti", "snowball"]
+  },
+  { "brand": "Razer", "matches": ["razer", "seiren"] },
+  { "brand": "Elgato", "matches": ["elgato", "wave:1", "wave:3", "wave xlr"] },
+  { "brand": "RØDE", "matches": ["rode", "røde", "nt-usb", "podmic"] },
+  { "brand": "Shure", "matches": ["shure", "mv7", "mv88"] },
+  { "brand": "Audio-Technica", "matches": ["audio-technica", "audio technica", "at2020"] },
+  { "brand": "FIFINE", "matches": ["fifine"] },
+  { "brand": "SteelSeries", "matches": ["steelseries", "alias", "arctis"] }
+]
